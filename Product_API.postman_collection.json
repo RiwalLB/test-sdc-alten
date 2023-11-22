@@ -1,0 +1,337 @@
+{
+	"info": {
+		"_postman_id": "d6ddc7b3-0c21-4501-9dd5-f47f0d74c47a",
+		"name": "Product API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31294259"
+	},
+	"item": [
+		{
+			"name": "Nominal cases",
+			"item": [
+				{
+					"name": "Get all products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/products",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get one product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/products/1000",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"products",
+								"1000"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\n{\n    \"code\": \"vwxz\",\n    \"name\": \"Truc utile\",\n    \"description\": \"C'est vraiment utile\",\n    \"price\": 100,\n    \"quantity\": 2,\n    \"inventoryStatusId\": 2,\n    \"categoryId\": 4,\n    \"image\": \"truc-utile.jpg\",\n    \"rating\": 6\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/products",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update product",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Nouveau nom\",\n    \"price\": 75,\n    \"quantity\": 20,\n    \"categoryId\": 3\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/products/1000",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"products",
+								"1000"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/products/1000",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"products",
+								"1000"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bad Request",
+			"item": [
+				{
+					"name": "Unexpected property",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"unexpected\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/products/1000",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"products",
+								"1000"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Wrong property type",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"price\": \"text\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/products/1000",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"products",
+								"1000"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Negative value",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"price\": -100\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/products/1000",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"products",
+								"1000"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Value too big",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"price\": 1000000000000000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/products/1000",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"products",
+								"1000"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Text too large",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam malesuada fermentum metus, quis ornare tortor lobortis consequat. Nam nec malesuada enim. Cras malesuada auctor leo, ut suscipit eros vestibulum sed. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent hendrerit felis ante, id volutpat nisl fermentum vitae. Suspendisse ut metus leo. Curabitur malesuada ultricies accumsan. Integer eget pretium felis, vitae sagittis justo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec et mauris efficitur, aliquam quam at, gravida sapien. In ultrices ante eget efficitur interdum.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/products/1000",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"products",
+								"1000"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Missing properties",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\n{\n    \"code\": \"abcd\",\n    \"name\": \"Objet\",\n    \"price\": 100,\n    \"quantity\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/products",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Not Found",
+			"item": [
+				{
+					"name": "Get - Not Found",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/products/9999",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"products",
+								"9999"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update - Not Found",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Nouveau nom\",\n    \"price\": 75,\n    \"quantity\": 20\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/products/1000",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"products",
+								"1000"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
