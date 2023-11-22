@@ -24,7 +24,7 @@
 
 # Description
 
-API 'product' réalisée en Node.js dans le cadre du test technique du SDC d'Alten
+API 'product' réalisée en Node.js dans le cadre du test technique pour le SDC d'Alten
 
 # Précisions
 

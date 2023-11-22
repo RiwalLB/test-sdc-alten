@@ -1,6 +1,6 @@
 # Description
 
-API 'product' réalisée en Java avec le framework Springboot dans le cadre du test technique du SDC d'Alten
+API 'product' réalisée en Java avec le framework Springboot dans le cadre du test technique pour le SDC d'Alten
 
 # Précisions
 
